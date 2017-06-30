@@ -1,6 +1,6 @@
 #include "AD5144.h"
 
-AD5144 poti;
+AD5144 poti(4, 53); // 4 channels, chip select pin 53
 
 void setup() {
   poti.begin();

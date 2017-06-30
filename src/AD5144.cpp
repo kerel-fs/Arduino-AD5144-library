@@ -19,11 +19,11 @@
 #include "AD5144.h"
 #include <assert.h>
 
-AD5144::AD5144( void ) {
-  channels = 4;
+AD5144::AD5144(const size_t _channels, const int _chip_select_pin) {
+  channels = _channels;
+  chip_select_pin = _chip_select_pin;
 
   // Set default settings
-  chip_select_pin = 53;
   spi_settings = SPISettings(1e6, MSBFIRST, SPI_MODE1);
 }
 
@@ -33,14 +33,7 @@ void AD5144::begin() {
   pinMode (chip_select_pin, OUTPUT);
 }
 
-void AD5144::begin(const int _chip_select_pin) {
-  chip_select_pin = _chip_select_pin;
-
-  begin();
-}
-
-void AD5144::begin(const int _chip_select_pin, const SPISettings _spi_settings) {
-  chip_select_pin = _chip_select_pin;
+void AD5144::begin(const SPISettings _spi_settings) {
   spi_settings = _spi_settings;
 
   begin();

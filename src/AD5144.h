@@ -25,20 +25,18 @@
 class AD5144
 {
   public:
-    int chip_select_pin;
     SPISettings spi_settings;
 
-
-    AD5144::AD5144( void );
+    AD5144::AD5144(const size_t _channels, const int _chip_select_pin);
 	void begin();
-    void AD5144::begin(const int _chip_select_pin);
-    void AD5144::begin(const int _chip_select_pin, const SPISettings _spi_settings);
+    void AD5144::begin(const SPISettings _spi_settings);
     uint16_t sendCommand(const byte control, const byte address, const byte data);
 	void set_value(const size_t channel, const byte value);
 	uint16_t get_value(const size_t channel);
 
   private:
     size_t channels;
+    int chip_select_pin;
 };
 
 #endif
