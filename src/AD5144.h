@@ -27,9 +27,9 @@ class AD5144
   public:
     SPISettings spi_settings;
 
-    AD5144::AD5144(const size_t _channels, const int _chip_select_pin);
+    AD5144(const size_t _channels, const int _chip_select_pin);
 	void begin();
-    void AD5144::begin(const SPISettings _spi_settings);
+    void begin(const SPISettings _spi_settings);
     uint16_t sendCommand(const byte control, const byte address, const byte data);
 	void set_value(const size_t channel, const byte value);
 	uint16_t get_value(const size_t channel);
